@@ -1,10 +1,13 @@
-package ba.unsa.etf.dms;
+package ba.unsa.etf.dms.presentation;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import ba.unsa.etf.dms.R;
+import ba.unsa.etf.dms.data.LoginExecutor;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -13,13 +16,15 @@ import butterknife.OnClick;
  * Created by Hugsby on 12/24/17.
  */
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements LoginExecutor.LoginInterface {
 
     @BindView(R.id.username)
     EditText username;
 
     @BindView(R.id.password)
     EditText password;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +41,12 @@ public class LoginActivity extends AppCompatActivity {
         if (password.getVisibility() == View.GONE) {
             if (isStringInserted(username.getText().toString())) {
                 password.setVisibility(View.VISIBLE);
+            } else {
+                Toast.makeText(getApplicationContext(), "Username must contain letters and/or numbers. ", Toast.LENGTH_LONG).show();
+            }
+        } else {
+            if (isStringInserted(password.getText().toString())) {
+                new LoginExecutor(username.getText().toString(), password.getText().toString(), this);
             }
         }
     }
@@ -44,4 +55,13 @@ public class LoginActivity extends AppCompatActivity {
         return !string.isEmpty();
     }
 
+    @Override
+    public void onLoginSuccess() {
+
+    }
+
+    @Override
+    public void onLoginError(String errorMessage) {
+
+    }
 }
