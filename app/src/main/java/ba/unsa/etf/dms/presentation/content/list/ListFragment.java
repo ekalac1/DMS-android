@@ -56,13 +56,15 @@ public class ListFragment extends Fragment implements WorkspaceActivity.ListFrag
             type = (ListType) getArguments().getSerializable(LIST_TYPE);
         }
 
+        viewModel = new ContentListViewModel(this, type);
+
         contentList.setHasFixedSize(true);
         GridLayoutManager mLayoutManager = new GridLayoutManager(view.getContext(), 2);
         contentList.setLayoutManager(mLayoutManager);
-        contentAdapter = new ContentAdapter(contentResponseList);
+        contentAdapter = new ContentAdapter(contentResponseList, viewModel);
         contentList.setAdapter(contentAdapter);
 
-        viewModel = new ContentListViewModel(this, type);
+
 
         return view;
     }

@@ -16,6 +16,7 @@ import java.util.List;
 import ba.unsa.etf.dms.data.Utils;
 import ba.unsa.etf.dms.data.content.ContentDTO;
 import ba.unsa.etf.dms.data.content.ContentResponse;
+import ba.unsa.etf.dms.data.content.DeleteDocumentExecutor;
 import ba.unsa.etf.dms.data.content.SaveDocumentExcecutor;
 import ba.unsa.etf.dms.data.content.UserProfileExecutor;
 import ba.unsa.etf.dms.data.content.UserWorkspaceExecutor;
@@ -32,7 +33,8 @@ import static ba.unsa.etf.dms.presentation.BaseLoggedActivity.USERNAME_CONST;
 
 public class ContentListViewModel implements ContentListInterface.ViewModel,
         DocumentCallback,
-        SaveDocumentExcecutor.DocumentExecutorInterface {
+        DeleteDocumentExecutor.DocumentDeleteExecutorInterface,
+        SaveDocumentExcecutor.DocumentExecutorInterface{
 
     private ListFragment parent;
     private ListType type;
@@ -63,6 +65,15 @@ public class ContentListViewModel implements ContentListInterface.ViewModel,
     @Override
     public void onSuccess(List<ContentResponse> response) {
         parent.updateList(response);
+    }
+
+    @Override
+    public void onDeleteSuccess() {
+        if (type == ListType.PROFILE) {
+            new UserProfileExecutor(this, parent.getContext(), this);
+        } else {
+            new UserWorkspaceExecutor(this, parent.getContext(), this);
+        }
     }
 
     @Override

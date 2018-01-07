@@ -8,6 +8,7 @@ import ba.unsa.etf.dms.data.content.ContentResponse;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
@@ -29,4 +30,7 @@ public interface API {
 
     @POST("content/save")
     Call<ResponseBody> saveDocument(@Body ContentDTO ontentResponse);
+
+    @DELETE("content/workspace")
+    Call<ResponseBody> deleteDocument(@Query("user") String user, @Query("document") int document);
 }

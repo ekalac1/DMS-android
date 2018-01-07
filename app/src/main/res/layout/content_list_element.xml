@@ -5,6 +5,13 @@
     android:layout_margin="16dp">
 
     <ImageView
+        android:id="@+id/dots"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_gravity="top|end"
+        android:src="@drawable/dots" />
+
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/content_image"

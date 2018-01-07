@@ -127,26 +127,26 @@ public class WorkspaceActivity extends BaseLoggedActivity
     void loadProfileFragment() {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-
         ListFragment fragment = ListFragment.newInstance(ListType.PROFILE);
         fragmentTransaction.add(R.id.frame_layout, fragment);
         fragmentTransaction.commit();
 
         fragmentInterface = fragment;
 
+        getSupportActionBar().setTitle("Vaši dokumenti");
+
     }
 
     void loadWorkSpaceFragment() {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-
         ListFragment fragment = ListFragment.newInstance(ListType.WORKSPACE);
         fragmentTransaction.add(R.id.frame_layout, fragment);
         fragmentTransaction.commit();
 
         fragmentInterface = fragment;
+
+        getSupportActionBar().setTitle("Podjeljeno sa Vama");
 
     }
 

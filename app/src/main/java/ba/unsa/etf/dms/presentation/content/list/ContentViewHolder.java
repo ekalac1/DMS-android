@@ -19,6 +19,8 @@ public class ContentViewHolder extends RecyclerView.ViewHolder {
     TextView title;
     @BindView(R.id.content_image)
     ImageView image;
+    @BindView(R.id.dots)
+    ImageView menu;
 
     public ContentViewHolder(View itemView) {
         super(itemView);
