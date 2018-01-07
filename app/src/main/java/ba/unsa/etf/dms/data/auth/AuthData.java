@@ -1,4 +1,4 @@
-package ba.unsa.etf.dms.data;
+package ba.unsa.etf.dms.data.auth;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -7,8 +7,6 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class AuthData {
-
-
     @SerializedName("username")
     private String username;
     @SerializedName("password")

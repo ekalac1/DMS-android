@@ -15,8 +15,10 @@ public class RetrofitBuilder {
 
     private static API DmsAPI;
 
+    private static Retrofit retrofit;
+
     private static API serviceBuilder() {
-        
+
 
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -25,7 +27,7 @@ public class RetrofitBuilder {
                 .addInterceptor(logging)
                 .build();
 
-        Retrofit retrofit = new Retrofit.Builder()
+        retrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl("https://salty-taiga-13205.herokuapp.com/")
                 .client(client)
@@ -39,6 +41,11 @@ public class RetrofitBuilder {
             DmsAPI = serviceBuilder();
         }
         return DmsAPI;
+    }
+
+
+    public static Retrofit getRetrofit() {
+       return retrofit;
     }
 
 

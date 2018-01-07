@@ -9,7 +9,7 @@
         android:id="@+id/log_in"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
+        android:layout_gravity="end"
         android:padding="16dp"
         android:text="@string/log_in"
         android:textColor="@color/white"
@@ -27,6 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
+            android:singleLine="true"
             android:hint="@string/username" />
 
 
@@ -36,6 +37,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:inputType="textPassword"
+            android:singleLine="true"
             android:hint="@string/password"/>
 
 
